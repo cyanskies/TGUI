@@ -15,6 +15,7 @@ set(TGUI_SRC
     TextureManager.cpp
     Transformable.cpp
     VerticalLayout.cpp
+	VerticalLayoutSimple.cpp
     Widget.cpp
     Loading/DataIO.cpp
     Loading/Deserializer.cpp

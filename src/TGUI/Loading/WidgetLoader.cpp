@@ -43,6 +43,8 @@
 #include <TGUI/Widgets/SpinButton.hpp>
 #include <TGUI/Widgets/Tab.hpp>
 #include <TGUI/Widgets/TextBox.hpp>
+#include <TGUI/VerticalLayout.hpp>
+#include <TGUI/VerticalLayoutSimple.hpp>
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -840,6 +842,22 @@ namespace tgui
         return textBox;
     }
 
+	TGUI_API Widget::Ptr loadVerticalLayout(std::shared_ptr<DataIO::Node> node, Widget::Ptr widget = nullptr)
+	{
+		if (widget)
+			return loadContainer(node, std::static_pointer_cast<VerticalLayout>(widget));
+		else
+			return loadContainer(node, std::make_shared<VerticalLayout>());
+	}
+
+	TGUI_API Widget::Ptr loadVerticalLayoutSimple(std::shared_ptr<DataIO::Node> node, Widget::Ptr widget = nullptr)
+	{
+		if (widget)
+			return loadContainer(node, std::static_pointer_cast<VerticalLayoutSimple>(widget));
+		else
+			return loadContainer(node, std::make_shared<VerticalLayoutSimple>());
+	}
+
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 }
 
@@ -873,7 +891,9 @@ namespace tgui
             {"slider", std::bind(loadSlider, std::placeholders::_1, std::shared_ptr<Slider>{})},
             {"spinbutton", std::bind(loadSpinButton, std::placeholders::_1, std::shared_ptr<SpinButton>{})},
             {"tab", std::bind(loadTab, std::placeholders::_1, std::shared_ptr<Tab>{})},
-            {"textbox", std::bind(loadTextBox, std::placeholders::_1, std::shared_ptr<TextBox>{})}
+            {"textbox", std::bind(loadTextBox, std::placeholders::_1, std::shared_ptr<TextBox>{})},
+			{"verticallayout", std::bind(loadVerticalLayout, std::placeholders::_1, std::shared_ptr<VerticalLayout>{})},
+			{"verticallayoutsimple", std::bind(loadVerticalLayoutSimple, std::placeholders::_1, std::shared_ptr<VerticalLayoutSimple>{})}
         };
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
