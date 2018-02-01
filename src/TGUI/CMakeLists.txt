@@ -1,4 +1,4 @@
-set(TGUI_SRC
+﻿set(TGUI_SRC
     Animation.cpp
     Clipboard.cpp
     Clipping.cpp
@@ -195,6 +195,13 @@ if(SFML_OS_MACOSX AND TGUI_SHARED_LIBS)
                           BUILD_WITH_INSTALL_RPATH 1
                           INSTALL_NAME_DIR "@rpath")
 endif()
+
+target_include_directories(${PROJECT_NAME} PUBLIC ../../include)
+
+target_link_libraries(${PROJECT_NAME} PUBLIC 
+	sfml-graphics
+	sfml-system
+	sfml-window)
 
 # Install library
 install(TARGETS ${PROJECT_NAME}

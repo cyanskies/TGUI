@@ -282,26 +282,26 @@ if(NOT TGUI_SHARED_LIBS)
 endif()
 
 # Find sfml (also look for the main component when using Visual Studio)
-if (SFML_OS_WINDOWS AND SFML_COMPILER_MSVC)
-    find_package(SFML 2 COMPONENTS main graphics window system)
-elseif (SFML_OS_ANDROID)
-    find_host_package(SFML 2 COMPONENTS graphics window system)
-else()
-    find_package(SFML 2 COMPONENTS graphics window system)
-endif()
+#if (SFML_OS_WINDOWS AND SFML_COMPILER_MSVC)
+#    find_package(SFML 2 COMPONENTS main graphics window system)
+#elseif (SFML_OS_ANDROID)
+#    find_host_package(SFML 2 COMPONENTS graphics window system)
+#else()
+#    find_package(SFML 2 COMPONENTS graphics window system)
+#endif()
 
 # FindSFML couldn't find SFML.
-if( NOT SFML_FOUND )
-    set( SFML_ROOT "" CACHE PATH "SFML root directory" )
-    message( FATAL_ERROR "CMake couldn't find SFML. Set the SFML_ROOT entry to SFML's root directory (containing \"include\" and \"lib\" directories)." )
-endif()
+#if( NOT SFML_FOUND )
+#    set( SFML_ROOT "" CACHE PATH "SFML root directory" )
+#    message( FATAL_ERROR "CMake couldn't find SFML. Set the SFML_ROOT entry to SFML's root directory (containing \"include\" and \"lib\" directories)." )
+#endif()
 
 # Set the path for the libraries
 set( LIBRARY_OUTPUT_PATH "${PROJECT_BINARY_DIR}/lib" )
 
 # Add the sfml and tgui include directories
-include_directories( "${PROJECT_SOURCE_DIR}/include" )
-include_directories( ${SFML_INCLUDE_DIR} )
+#include_directories( "${PROJECT_SOURCE_DIR}/include" )
+#include_directories( ${SFML_INCLUDE_DIR} )
 
 set(TGUI_EXT_LIBS ${SFML_LIBRARIES} ${SFML_DEPENDENCIES})
 if(SFML_OS_ANDROID)
